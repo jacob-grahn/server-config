@@ -42,6 +42,7 @@ apt-get update -y
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 # Create directories for services
+mkdir /data
 mkdir /data/pr2-db-data
 mkdir /backups/pr2-db-backups
 

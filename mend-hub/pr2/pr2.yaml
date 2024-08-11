@@ -1,21 +1,20 @@
 services:
-  
-  pr2-db:
+  db:
     image: mysql:9.0
     volumes:
-      - pr2-db-data:/var/lib/mysql
-      - pr2-db-backups:/backups
+      - db-data:/var/lib/mysql
+      - db-backups:/backups
     networks:
-      - pr2-backend
+      - backend
 
 volumes:
-  pr2-db-data:
+  db-data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
       device: '/data/pr2-db-data'
-  pr2-db-backups:
+  db-backups:
     driver: local
     driver_opts:
       type: 'none'
@@ -23,7 +22,5 @@ volumes:
       device: '/backups/pr2-db-backups'
 
 networks:
-  pr2-frontend:
-    name: pr2-frontend
-  pr2-backend:
-    name: pr2-backend
+  frontend: {}
+  backend: {}
