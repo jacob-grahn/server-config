@@ -8,8 +8,8 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Fetch credentials
 mysql_user='root'
-mysql_pass=$(yq -e .services.db.envireonment.MYSQL_ROOT_PASSWORD $SCRIPT_DIR/pr2.secrets.yaml)
-backup_path="/backups/pr2-db"
+mysql_pass=$(yq -r -e .services.db.environment.MYSQL_ROOT_PASSWORD $SCRIPT_DIR/pr2.secrets.yaml)
+backup_path="/backups/pr2-db-backups"
 backup_file=$(printf -v date '%(%Y-%m-%d)T\n' -1).sql
 retention_days='30'
 
