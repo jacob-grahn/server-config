@@ -3,7 +3,6 @@ services:
     image: mysql:9.0
     volumes:
       - db-data:/var/lib/mysql
-      - db-backups:/backups
     networks:
       - backend
 
@@ -14,12 +13,6 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/data/pr2-db-data'
-  db-backups:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/backups/pr2-db-backups'
 
 networks:
   frontend: {}
