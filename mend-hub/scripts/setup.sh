@@ -20,6 +20,9 @@ fi
 echo "Updating system packages..."
 apt-get update && apt-get upgrade -y
 
+# Install helpful packages
+apt-get install yq -y
+
 # Install unattended-upgrades for automatic package updates
 echo "Installing unattended-upgrades for automatic system updates..."
 apt-get install -y unattended-upgrades
