@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # Exit script if a command errors
+
 # Set up a backup directory that stores files on a remote bucket
 if [ ! -f "${HOME}/.passwd-s3fs" ]; then
   read -p 'Bucket Name: (example: mend-hub-backups): ' bucket_name
