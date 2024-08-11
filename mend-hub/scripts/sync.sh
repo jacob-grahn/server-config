@@ -12,6 +12,7 @@ git pull
 # Run services
 docker compose \
   -f pr2/pr2.yaml \
+  -f pr2/pr2.secrets.yaml \
   --project-name pr2 \
   up \
   -d \
