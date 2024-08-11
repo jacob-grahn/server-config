@@ -65,6 +65,7 @@ git clone https://github.com/jacob-grahn/server-config.git ~/server-config
 echo "Setting up cron job..."
 (crontab -l 2>/dev/null; echo "*/10 * * * * /home/fred-bot/server-config/mend-hub/scripts/sync.sh") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot /home/fred-bot/server-config/mend-hub/scripts/sync.sh") | crontab -
+(crontab -l 2>/dev/null; echo "5 4 * * * /home/fred-bot/server-config/mend-hub/pr2/backup.sh") | crontab -
 EOF
 
 # Set up a root cron job to restart the VM once per month
