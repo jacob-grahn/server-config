@@ -48,6 +48,7 @@ apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docke
 mkdir /data
 mkdir /data/pr2-db-data
 mkdir /backups/pr2-db-backups
+chown -R fred-bot:fred-bot /backups
 
 # Create a non-root user 'fred-bot'
 echo "Creating user 'fred-bot'..."
