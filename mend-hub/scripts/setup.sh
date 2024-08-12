@@ -43,6 +43,16 @@ apt-get update -y
 
 # Install docker
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+docker plugin install grafana/loki-docker-driver:2.9.2 --alias loki --grant-all-permissions
+echo '{
+  "log-driver": "loki"
+  "log-opts": {
+    "loki-url": "http://localhost:3100/api/v1/push",
+    "loki-retries": "5",
+    "loki-batch-size": "400"
+  }
+}' > /etc/docker/daemon.json
+
 
 # Create directories for services
 mkdir /data
