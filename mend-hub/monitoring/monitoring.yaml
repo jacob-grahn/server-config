@@ -11,3 +11,5 @@ services:
       - "/dev/disk/:/dev/disk:ro"
     ports:
       - "8080:8080"
+    devices: 
+      - "/dev/kmsg"
