@@ -2,8 +2,6 @@ services:
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.49.1
-    hostname: cadvisor
-    platform: linux/arch64
     volumes:
       - "/:/rootfs:ro"
       - "/var/run:/var/run:ro"
