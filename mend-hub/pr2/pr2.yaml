@@ -10,9 +10,9 @@ volumes:
   db-data:
     driver: local
     driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/data/pr2-db-data'
+      type: none
+      o: bind
+      device: /data/pr2-db-data
 
 networks:
   frontend: {}
