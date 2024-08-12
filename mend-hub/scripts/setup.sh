@@ -47,6 +47,7 @@ apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docke
 # Create directories for services
 mkdir /data
 mkdir /data/pr2-db-data
+mkdir /data/grafana-data
 mkdir /backups/pr2-db-backups
 chown -R fred-bot:fred-bot /backups
 
