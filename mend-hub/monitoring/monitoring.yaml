@@ -12,11 +12,24 @@ services:
     devices:
       - /dev/kmsg:/dev/kmsg
     privileged: true
-  
 
   prometheus:
     image: prom/prometheus:v2.53.2
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  
+  grafana:
+    image: grafana/grafana-oss:11.1.3
     ports:
-      - "9090:9090"
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+  
+volumes:
+  grafana-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/grafana-data
