@@ -17,6 +17,6 @@ services:
   prometheus:
     image: prom/prometheus
     volumes:
-      - ./prometheus-scrape-config.yml:/etc/prometheus/prometheus-scrape-config.yaml
+      - ./prometheus-scrape-config.yaml:/etc/prometheus/prometheus-scrape-config.yaml
     ports:
       - "9090:9090"
