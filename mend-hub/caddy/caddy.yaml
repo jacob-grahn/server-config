@@ -1,6 +1,5 @@
 services:
   caddy:
-    restart: always
     volumes:
       - caddy-data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile

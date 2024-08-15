@@ -2,11 +2,9 @@ services:
 
   web:
     image: ghcr.io/jacob-grahn/platform-racing-4-client-web:${CLIENT_WEB_TAG}
-    restart: always
   
   api:
     image: ghcr.io/jacob-grahn/platform-racing-4-api:${API_TAG}
-    restart: always
     volumes:
       - api-data:/data
     environment:
