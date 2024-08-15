@@ -60,6 +60,7 @@ mkdir /data/pr2-db-data
 mkdir /data/grafana-data
 mkdir /data/loki-data
 mkdir /data/prometheus-data
+mkdir /data/tempo-data
 mkdir /backups/pr2-db-backups
 chown -R fred-bot:fred-bot /backups
 

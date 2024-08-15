@@ -1,0 +1,44 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+      otlp:
+        protocols:
+          http:
+          grpc:
+
+compactor:
+  compaction:
+    block_retention: 48h                # configure total trace retention here
+
+metrics_generator:
+  registry:
+    external_labels:
+      source: tempo
+      cluster: linux-microservices
+  storage:
+    path: /var/tempo/generator/wal
+    remote_write:
+    - url: http://localhost:9090/api/v1/write
+      send_exemplars: true
+
+storage:
+  trace:
+    backend: s3
+    s3:
+      endpoint: s3.us-east-1.amazonaws.com
+      bucket: grafana-traces-data
+      forcepathstyle: true
+      # set to false if endpoint is https
+      insecure: true
+      access_key: # TODO - Add S3 access key
+      secret_key: # TODO - Add S3 secret key
+    wal:
+      path: /var/tempo/wal         # where to store the wal locally
+    local:
+      path: /var/tempo/blocks
+overrides:
+  defaults:
+    metrics_generator:
+      processors: [service-graphs, span-metrics]
