@@ -49,11 +49,3 @@ storage:
       path: /var/tempo/wal             # where to store the wal locally
     local:
       path: /var/tempo/blocks
-
-overrides:
-  defaults:
-    metrics_generator:
-      processors: [service-graphs, span-metrics, local-blocks] # enables metrics generator
-      generate_native_histograms: both
-  legacyConfig:
-    defaults: {}

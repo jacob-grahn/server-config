@@ -20,7 +20,6 @@ services:
       - --config.file=/etc/prometheus.yaml
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
-      - --enable-feature=native-histograms
     volumes:
       - ./prometheus-config.yml:/etc/prometheus.yaml
       - prometheus-data:/prometheus
@@ -59,6 +58,7 @@ services:
       #- "4317:4317"  # otlp grpc
       - "4318:4318"  # otlp http
       #- "9411:9411"   # zipkin
+    restart: unless-stopped
   
 volumes:
   grafana-data:
