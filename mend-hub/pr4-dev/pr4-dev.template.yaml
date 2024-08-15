@@ -2,6 +2,8 @@ services:
 
   web:
     image: ghcr.io/jacob-grahn/platform-racing-4-client-web:${CLIENT_WEB_TAG}
+    networks:
+      - frontend
   
   api:
     image: ghcr.io/jacob-grahn/platform-racing-4-api:${API_TAG}
@@ -9,7 +11,13 @@ services:
       - api-data:/data
     environment:
       DB_PATH: data/pr4-api.db
+    networks:
+      - frontend
 
 volumes:
   api-data:
     driver: local
+
+networks:
+  frontend: {}
+  backend: {}
