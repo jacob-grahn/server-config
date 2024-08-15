@@ -12,3 +12,5 @@ git pull
 # Run services
 ./pr2/up.sh
 ./monitoring/up.sh
+./pr4/up.sh
+./pr4-dev/up.sh
