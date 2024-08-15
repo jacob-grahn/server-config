@@ -16,15 +16,10 @@ common:
       store: inmemory
 
 compactor:
-  working_directory: /data/retention
-  compaction_interval: 30m
   retention_enabled: true
-  retention_delete_delay: 2h
-  retention_delete_worker_count: 150
-  delete_request_store: filesystem
 
 limits_config:
-  retention_period: 7d
+  retention_period: 168h
 
 schema_config:
   configs:
