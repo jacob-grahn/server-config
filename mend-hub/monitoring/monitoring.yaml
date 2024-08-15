@@ -16,19 +16,22 @@ services:
   prometheus:
     image: prom/prometheus:v2.53.2
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus-config.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/var/lib/prometheus
   
   loki:
     image: grafana/loki:3.1.1
     ports:
       - "3100:3100"
-    command: -config.file=/etc/loki/local-config.yaml
-  
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
+      - loki-data:/loki
+
   grafana:
     image: grafana/grafana-oss:11.1.3
     volumes:
+      - ./grafana-config.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
       - grafana-data:/var/lib/grafana
-      - ./datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
     ports:
       - "3000:3000"
   
@@ -39,3 +42,15 @@ volumes:
       type: none
       o: bind
       device: /data/grafana-data
+  loki-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/loki-data
+  prometheus-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/prometheus-data
