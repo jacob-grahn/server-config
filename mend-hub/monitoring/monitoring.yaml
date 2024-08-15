@@ -17,7 +17,7 @@ services:
     image: prom/prometheus:v2.53.2
     volumes:
       - ./prometheus-config.yml:/etc/prometheus/prometheus.yml
-      - prometheus-data:/var/lib/prometheus
+      - prometheus-data:/prometheus
   
   loki:
     image: grafana/loki:3.1.1
