@@ -42,7 +42,7 @@ services:
   tempo:
     image: grafana/tempo:2.5.0
     volumes:
-      #- ./tempo-config.yaml:/etc/tempo.yaml
+      - ./tempo-config.yaml:/etc/tempo.yaml
       - tempo-data:/var/tempo
     ports:
       #- "14268:14268"  # jaeger ingest

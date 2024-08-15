@@ -1,44 +1,57 @@
+stream_over_http_enabled: true
 server:
   http_listen_port: 3200
+  log_level: info
+
+query_frontend:
+  search:
+    duration_slo: 5s
+    throughput_bytes_slo: 1.073741824e+09
+  trace_by_id:
+    duration_slo: 5s
 
 distributor:
-  receivers:
-      otlp:
-        protocols:
-          http:
-          grpc:
+  receivers:                           # this configuration will listen on all ports and protocols that tempo is capable of.
+    #jaeger:                            # the receives all come from the OpenTelemetry collector.  more configuration information can
+    #  protocols:                       # be found there: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver
+    #    thrift_http:                   #
+    #    grpc:                          # for a production deployment you should only enable the receivers you need!
+    #    thrift_binary:
+    #    thrift_compact:
+    #zipkin:
+    otlp:
+      protocols:
+        http:
+    #    grpc:
+    #opencensus:
 
 compactor:
   compaction:
-    block_retention: 48h                # configure total trace retention here
+    block_retention: 7d                # overall Tempo trace retention
 
 metrics_generator:
   registry:
     external_labels:
       source: tempo
-      cluster: linux-microservices
+      cluster: docker-compose
   storage:
     path: /var/tempo/generator/wal
     remote_write:
-    - url: http://localhost:9090/api/v1/write
-      send_exemplars: true
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+  traces_storage:
+    path: /var/tempo/generator/traces
 
 storage:
   trace:
-    backend: s3
-    s3:
-      endpoint: s3.us-east-1.amazonaws.com
-      bucket: grafana-traces-data
-      forcepathstyle: true
-      # set to false if endpoint is https
-      insecure: true
-      access_key: # TODO - Add S3 access key
-      secret_key: # TODO - Add S3 secret key
+    backend: local                     # backend configuration to use
     wal:
-      path: /var/tempo/wal         # where to store the wal locally
+      path: /var/tempo/wal             # where to store the wal locally
     local:
       path: /var/tempo/blocks
+
 overrides:
   defaults:
     metrics_generator:
-      processors: [service-graphs, span-metrics]
+      processors: [service-graphs, span-metrics, local-blocks] # enables metrics generator
+      generate_native_histograms: both
