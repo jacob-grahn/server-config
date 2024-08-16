@@ -1,9 +1,10 @@
 services:
   caddy:
+    container_name: ingress-caddy
+    image: caddy:2.8-alpine
     volumes:
       - caddy-data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
-    image: caddy:2.8-alpine
     ports:
       - 443:443
       - 443:443/udp

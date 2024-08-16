@@ -1,23 +1,20 @@
 services:
 
-  web:
+  pr4-dev-web:
+    container_name: pr4-dev-web
     image: ghcr.io/jacob-grahn/platform-racing-4-client-web:${CLIENT_WEB_TAG}
     networks:
-      pr4-dev-frontend:
-        aliases:
-          - pr4-dev-web
+      - pr4-dev-frontend
   
-  api:
+  pr4-dev-api:
     container_name: pr4-dev-api
     image: ghcr.io/jacob-grahn/platform-racing-4-api:${API_TAG}
     volumes:
       - api-data:/data
     environment:
-      DB_PATH: data/pr4-api.db
+      DB_PATH: data/pr4-dev-api.db
     networks:
-      pr4-dev-frontend:
-        aliases:
-          - pr4-dev-api
+      - pr4-dev-frontend
 
 volumes:
   api-data:
