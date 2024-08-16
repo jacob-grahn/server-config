@@ -1,7 +1,7 @@
 services:
   caddy:
     container_name: ingress-caddy
-    build: ./
+    image: iarekylew00t/caddy-cloudflare:2.8
     volumes:
       - caddy-data:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
