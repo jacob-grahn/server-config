@@ -1,5 +1,7 @@
 FROM caddy:2.8-builder AS builder
 
+RUN GOPROXY=https://goproxy.cn go get github.com/klauspost/compress
+
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare
 
