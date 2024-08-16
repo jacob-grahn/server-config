@@ -18,3 +18,4 @@ volumes:
 networks:
   pr4-dev-frontend:
     name: pr4-dev-frontend
+    external: true
