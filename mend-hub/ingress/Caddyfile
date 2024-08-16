@@ -9,8 +9,27 @@ dev.platformracing.com {
     # web
     reverse_proxy /* http://pr4-dev-web:80
 
-    # work behind cloudflare
+    # work with cloudflare
     tls {
         dns cloudflare {env.CF_API_TOKEN}
     }
 }
+
+
+platformracing.com {
+
+    # api
+    route /api/* {
+        uri strip_prefix api
+        reverse_proxy http://pr4-api:8080
+    }
+
+    # web
+    reverse_proxy /* http://pr4-web:80
+
+    # work with cloudflare
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
