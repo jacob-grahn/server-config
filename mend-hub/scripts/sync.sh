@@ -14,4 +14,5 @@ git pull
 ./up.sh monitoring
 ./up.sh pr4
 ./up.sh pr4-dev
+./up.sh br
 ./up.sh ingress

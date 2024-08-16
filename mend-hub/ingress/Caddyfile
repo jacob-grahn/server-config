@@ -33,3 +33,31 @@ platformracing.com {
     }
 }
 
+
+bubbleracing.com {
+
+    # api
+    route /api/* {
+        uri strip_prefix api
+        reverse_proxy http://br-api:8080
+    }
+
+    # web
+    reverse_proxy /* http://br-web:80
+
+    # gameservers
+    route /gameservers/1 {
+        uri strip_prefix gameservers/1
+        reverse_proxy br-gameserver-1:9999
+    }
+    route /gameservers/2 {
+        uri strip_prefix gameservers/2
+        reverse_proxy br-gameserver-2:9999
+    }
+
+    # work with cloudflare
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
