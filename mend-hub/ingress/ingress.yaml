@@ -13,6 +13,7 @@ services:
     networks:
       - pr4-dev-frontend
       - pr4-frontend
+      - br-frontend
 
 volumes:
   caddy-data: {}
@@ -23,4 +24,7 @@ networks:
     external: true
   pr4-frontend:
     name: pr4-frontend
+    external: true
+  br-frontend:
+    name: br-frontend
     external: true

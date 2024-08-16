@@ -44,4 +44,4 @@ volumes:
 
 networks:
   br-frontend:
-    name: pr4-frontend
+    name: br-frontend
