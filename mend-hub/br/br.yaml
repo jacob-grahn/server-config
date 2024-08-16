@@ -2,13 +2,13 @@ services:
 
   br-web:
     container_name: br-web
-    image: registry.gitlab.com/bubble-racing/bubble-racing-client/web:2024-04-16-18-07-main-a110a17f
+    image: jacobgrahn/bubble-racing:web-2024-04-16-18-07-main-a110a17f
     networks:
       - br-frontend
 
   br-api:
     container_name: br-api
-    image: registry.gitlab.com/bubble-racing/bubble-racing-api:main-0fe3f308-2024-04-17-18-02
+    image: jacobgrahn/bubble-racing:api-main-0fe3f308-2024-04-17-18-02
     environment:
       - SQLITE_FILE=/br-api-data/db.sqlite
     volumes:
@@ -19,7 +19,7 @@ services:
   br-gameserver-1:
     container_name: br-gameserver-1
     command: ["godot", "--main-pack", "bubble-racing-server.pck", "--server"]
-    image: registry.gitlab.com/bubble-racing/bubble-racing-client/server:2024-04-16-18-07-main-a110a17f
+    image: jacobgrahn/bubble-racing:server-2024-04-16-18-07-main-a110a17f
     environment:
       GAMESERVER_ID: 1
       API_URL: http://br-api:8080
@@ -30,7 +30,7 @@ services:
   br-gameserver-2:
     container_name: br-gameserver-2
     command: ["godot", "--main-pack", "bubble-racing-server.pck", "--server"]
-    image: registry.gitlab.com/bubble-racing/bubble-racing-client/server:2024-04-16-18-07-main-a110a17f
+    image: jacobgrahn/bubble-racing:server-2024-04-16-18-07-main-a110a17f
     environment:
       GAMESERVER_ID: 1
       API_URL: http://br-api:8080
