@@ -12,6 +12,7 @@ services:
       CONFIG_VERSION: 2 # update this number for force caddy to restart and read new config
     networks:
       - pr4-dev-frontend
+      - pr4-frontend
 
 volumes:
   caddy-data: {}
@@ -19,4 +20,7 @@ volumes:
 networks:
   pr4-dev-frontend:
     name: pr4-dev-frontend
+    external: true
+  pr4-frontend:
+    name: pr4-frontend
     external: true
