@@ -18,7 +18,7 @@ repo="${image_path#*/}"
 token=$(curl --fail -s https://ghcr.io/token\?scope\="repository:$registry/$repo:pull" | jq '.token' -r)
 
 # Fetch list of tags
-tags_response=$(curl --fail -s -H "Authorization: Bearer $token" "https://${registry}/v2/${repo}/tags/list")
+tags_response=$(curl --fail -s -H "Authorization: Bearer $token" "https://${registry}/v2/${repo}/tags/list?n=200")
 
 # Filter tags by pattern and sort
 tags=$(echo "$tags_response" | jq -r ".tags[] | select(test(\"$pattern\"))" | sort -r)
