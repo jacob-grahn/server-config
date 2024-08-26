@@ -40,7 +40,7 @@ services:
     volumes:
       - pr4-dev-kratos:/var/lib/sqlite
       - ./kratos:/etc/config/kratos
-    command: serve -c /etc/config/kratos/kratos.yml --dev --watch-courier
+    command: serve -c /etc/config/kratos/kratos.yml --watch-courier
     networks:
       - pr4-dev-frontend
   
