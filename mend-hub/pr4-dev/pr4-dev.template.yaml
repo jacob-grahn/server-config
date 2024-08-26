@@ -45,6 +45,7 @@ services:
       - pr4-dev-frontend
   
   pr4-dev-kratos-ui:
+    container_name: pr4-dev-kratos-ui
     image: oryd/kratos-selfservice-ui-node:v1.2.0
     environment:
       KRATOS_PUBLIC_URL: http://pr4-dev-kratos:4433/
