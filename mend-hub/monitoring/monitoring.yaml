@@ -51,7 +51,7 @@ services:
     environment:
       - GF_FEATURE_TOGGLES_ENABLE=traceqlEditor traceQLStreaming metricsSummary
     networks:
-      - monitoring-frondend
+      - monitoring-frontend
       - monitoring-backend
   
   tempo:
