@@ -9,6 +9,18 @@ dev.platformracing.com {
     # web
     reverse_proxy /* http://pr4-dev-web:80
 
+    # auth
+    route /auth/* {
+        uri strip_prefix auth
+        reverse_proxy http://pr4-dev-kratos:4433
+    }
+
+    # auth-ui
+    route /auth-ui/* {
+        uri strip_prefix auth-ui
+        reverse_proxy http://pr4-dev-kratos-ui:4455
+    }
+
     # work with cloudflare
     tls {
         dns cloudflare {env.CF_API_TOKEN}

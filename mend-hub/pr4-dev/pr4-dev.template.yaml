@@ -15,10 +15,52 @@ services:
       DB_PATH: data/pr4-dev-api.db
     networks:
       - pr4-dev-frontend
+  
+  pr4-dev-kratos-migrate:
+    container_name: pr4-dev-kratos-migrate
+    image: oryd/kratos:v1.2.0
+    environment:
+      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
+    volumes:
+      - pr4-dev-kratos:/var/lib/sqlite
+      - ./kratos:/etc/config/kratos
+    command: -c /etc/config/kratos/kratos.yml migrate sql -e --yes
+    networks:
+      - pr4-dev-backend
+  
+  pr4-dev-kratos:
+    container_name: pr4-dev-kratos
+    image: oryd/kratos:v1.2.0
+    depends_on:
+      - pr4-dev-kratos-migrate
+    environment:
+      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true
+      - LOG_LEVEL=trace
+    volumes:
+      - pr4-dev-kratos:/var/lib/sqlite
+      - ./kratos:/etc/config/kratos
+    command: serve -c /etc/config/kratos/kratos.yml --dev --watch-courier
+    networks:
+      - pr4-dev-frontend
+  
+  dev-kratos-ui:
+    image: oryd/kratos-selfservice-ui-node:v1.2.0
+    environment:
+      - KRATOS_PUBLIC_URL=http://pr4-dev-kratos:4433/
+      - KRATOS_BROWSER_URL=https://dev.platformracing.com/auth/
+      - CSRF_COOKIE_NAME=pr4_csrf
+    networks:
+      - pr4-dev-frontend
 
 volumes:
   pr4-dev-api-data:
     driver: local
+  pr4-dev-kratos:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/pr4-dev-kratos
 
 networks:
   pr4-dev-frontend:
