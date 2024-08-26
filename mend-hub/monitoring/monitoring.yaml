@@ -49,7 +49,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_FEATURE_TOGGLES_ENABLE=traceqlEditor traceQLStreaming metricsSummary
+      GF_FEATURE_TOGGLES_ENABLE: traceqlEditor traceQLStreaming metricsSummary
     networks:
       - monitoring-frontend
       - monitoring-backend

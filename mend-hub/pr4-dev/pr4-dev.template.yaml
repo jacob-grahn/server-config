@@ -20,7 +20,7 @@ services:
     container_name: pr4-dev-kratos-migrate
     image: oryd/kratos:v1.2.0
     environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
+      DSN: sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
     volumes:
       - pr4-dev-kratos:/var/lib/sqlite
       - ./kratos:/etc/config/kratos
@@ -34,8 +34,8 @@ services:
     depends_on:
       - pr4-dev-kratos-migrate
     environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true
-      - LOG_LEVEL=trace
+      DSN: sqlite:///var/lib/sqlite/db.sqlite?_fk=true
+      LOG_LEVEL: trace
     volumes:
       - pr4-dev-kratos:/var/lib/sqlite
       - ./kratos:/etc/config/kratos
@@ -46,9 +46,9 @@ services:
   dev-kratos-ui:
     image: oryd/kratos-selfservice-ui-node:v1.2.0
     environment:
-      - KRATOS_PUBLIC_URL=http://pr4-dev-kratos:4433/
-      - KRATOS_BROWSER_URL=https://dev.platformracing.com/auth/
-      - CSRF_COOKIE_NAME=pr4_csrf
+      KRATOS_PUBLIC_URL: http://pr4-dev-kratos:4433/
+      KRATOS_BROWSER_URL: https://dev.platformracing.com/auth/
+      CSRF_COOKIE_NAME: pr4_csrf
     networks:
       - pr4-dev-frontend
 

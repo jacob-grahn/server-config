@@ -10,7 +10,7 @@ services:
     container_name: br-api
     image: jacobgrahn/bubble-racing:api-main-0fe3f308-2024-04-17-18-02
     environment:
-      - SQLITE_FILE=/br-api-data/db.sqlite
+      SQLITE_FILE: /br-api-data/db.sqlite
     volumes:
       - br-api-data:/br-api-data
     networks:
