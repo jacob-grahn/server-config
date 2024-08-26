@@ -75,11 +75,11 @@ log:
 # set these with environment variables like:
 # export SECRETS_COOKIE_0=
 # export SECRETS_CIPHER_0=
-#secrets:
-#  cookie:
-#    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
-#  cipher:
-#    - 32-LONG-SECRET-NOT-SECURE-AT-ALL
+secrets:
+  cookie:
+    - ""
+  cipher:
+    - ""
 
 ciphers:
   algorithm: xchacha20-poly1305
