@@ -18,7 +18,7 @@ dev.platformracing.com {
     # auth-ui
     route /auth-ui/* {
         uri strip_prefix auth-ui
-        reverse_proxy http://pr4-dev-kratos-ui:4455
+        reverse_proxy http://pr4-dev-kratos-ui:3000
     }
 
     # work with cloudflare
