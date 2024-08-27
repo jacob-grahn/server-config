@@ -98,7 +98,7 @@ identity:
 courier:
   smtp:
     connection_uri: ""
-    from_address: fred@platformracing.com
+    from_address: fred@mail.platformracing.com
     from_name: Fred the Giant Cactus
 
 feature_flags:
