@@ -36,7 +36,7 @@ services:
     environment:
       DSN: sqlite:///var/lib/sqlite/db.sqlite?_fk=true
       LOG_LEVEL: trace
-      CONFIG_VERSION: 2 # increment to force new config to load
+      CONFIG_VERSION: 3 # increment to force new config to load
     volumes:
       - pr4-dev-kratos:/var/lib/sqlite
       - ./kratos:/etc/config/kratos
