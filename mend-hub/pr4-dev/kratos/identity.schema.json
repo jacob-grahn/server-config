@@ -28,11 +28,13 @@
         },
         "nickname": {
           "title": "Nickname",
-          "type": "string"
+          "type": "string",
+          "minLength": 3
         }
       },
       "required": [
-        "email"
+        "email",
+        "nickname"
       ],
       "additionalProperties": false
     }
