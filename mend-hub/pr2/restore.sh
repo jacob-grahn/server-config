@@ -8,8 +8,8 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # Fetch credentials
 mysql_user='root'
-mysql_pass=$(yq -r -e .services.db.environment.MYSQL_ROOT_PASSWORD $SCRIPT_DIR/pr2.secrets.yaml)
-backup_path="/backups/pr2-db-backups"
+mysql_pass=$(yq -r -e .services.pr2-mysql.environment.MYSQL_ROOT_PASSWORD $SCRIPT_DIR/pr2.secrets.yaml)
+backup_path="/backups/pr2-mysql-backups"
 
 # Ask which version to restore
 echo "Available backups: $(ls $backup_path)"

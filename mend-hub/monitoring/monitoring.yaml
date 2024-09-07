@@ -28,6 +28,7 @@ services:
       - prometheus-data:/prometheus
     networks:
       - monitoring-backend
+      - pr2-backend
   
   loki:
     container_name: monitoring-loki
@@ -102,3 +103,6 @@ networks:
     name: monitoring-frontend
   monitoring-backend:
     name: monitoring-backend
+  pr2-backend:
+    name: pr2-backend
+    external: true

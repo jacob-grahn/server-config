@@ -1,19 +1,30 @@
 services:
-  db:
+
+  pr2-mysql:
+    container_name: pr2-mysql
     image: mysql:9.0
     volumes:
-      - db-data:/var/lib/mysql
+      - pr2-mysql-data:/var/lib/mysql
     networks:
-      - backend
+      - pr2-backend
+
+  pr2-mysql-exporter:
+    container_name: pr2-mysql-exporter
+    image: prom/mysqld-exporter:v0.15.1
+    command: -mysqld.address=pr2-mysql:3306 -mysqld.username=mysql_exporter
+    networks:
+      - pr2-backend
 
 volumes:
-  db-data:
+  pr2-mysql-data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /data/pr2-db-data
+      device: /data/pr2-mysql-data
 
 networks:
-  frontend: {}
-  backend: {}
+  pr2-frontend:
+    name: pr2-frontend
+  pr2-backend:
+    name: pr2-backend

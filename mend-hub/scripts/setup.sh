@@ -56,13 +56,13 @@ echo '{
 
 # Create directories for services
 mkdir /data
-mkdir /data/pr2-db-data
+mkdir /data/pr2-mysql-data
 mkdir /data/grafana-data
 mkdir /data/loki-data
 mkdir /data/prometheus-data
 mkdir /data/tempo-data
 mkdir /data/pr4-dev-kratos
-mkdir /backups/pr2-db-backups
+mkdir /backups/pr2-mysql-backups
 chown -R fred-bot:fred-bot /backups
 
 # Create a non-root user 'fred-bot'
