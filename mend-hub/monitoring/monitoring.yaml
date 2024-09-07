@@ -23,6 +23,8 @@ services:
       - --config.file=/etc/prometheus.yaml
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
+    environment:
+      config_version: 1 # increment to force new config change to load
     volumes:
       - ./prometheus-config.yml:/etc/prometheus.yaml
       - prometheus-data:/prometheus
