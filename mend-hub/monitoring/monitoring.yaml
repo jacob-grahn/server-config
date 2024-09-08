@@ -24,13 +24,15 @@ services:
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
     environment:
-      config_version: 1 # increment to force new config change to load
+      config_version: 2 # increment to force new config change to load
     volumes:
       - ./prometheus-config.yml:/etc/prometheus.yaml
       - prometheus-data:/prometheus
     networks:
       - monitoring-backend
       - pr2-backend
+    ports:
+      9090:9090
   
   loki:
     container_name: monitoring-loki

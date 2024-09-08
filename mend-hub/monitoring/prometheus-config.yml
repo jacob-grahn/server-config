@@ -8,6 +8,6 @@ scrape_configs:
   - job_name: cadvisor
     static_configs:
       - targets: [cadvisor:8080]
-  - job_name: pr2-db-exporter
+  - job_name: pr2-db
     static_configs:
       - targets: [pr2-db-exporter:9104]
