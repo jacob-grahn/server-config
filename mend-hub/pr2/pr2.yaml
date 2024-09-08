@@ -15,8 +15,8 @@ services:
     command: --mysqld.address=pr2-mysql:3306 --mysqld.username=exporter
     networks:
       - pr2-backend
-    ports:
-     - 9104:9104
+    #ports:
+    # - 9104:9104
 
 volumes:
   pr2-mysql-data:
