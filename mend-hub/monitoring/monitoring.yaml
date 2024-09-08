@@ -32,7 +32,7 @@ services:
       - monitoring-backend
       - pr2-backend
     ports:
-      9090:9090
+      - 9090:9090
   
   loki:
     container_name: monitoring-loki
