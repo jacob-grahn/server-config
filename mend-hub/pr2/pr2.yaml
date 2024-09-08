@@ -8,12 +8,15 @@ services:
     networks:
       - pr2-backend
 
+  # exposes database metrics for prometheus
   pr2-mysql-exporter:
     container_name: pr2-mysql-exporter
     image: prom/mysqld-exporter:v0.15.1
     command: --mysqld.address=pr2-mysql:3306 --mysqld.username=exporter
     networks:
       - pr2-backend
+    ports:
+     - 9104:9104
 
 volumes:
   pr2-mysql-data:
