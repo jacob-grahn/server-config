@@ -7,6 +7,7 @@ services:
       - pr2-mysql-data:/var/lib/mysql
     networks:
       - pr2-backend
+    command: ["mysqld", "--upgrade=FORCE"]
 
   # exposes database metrics for prometheus
   pr2-mysql-exporter:
