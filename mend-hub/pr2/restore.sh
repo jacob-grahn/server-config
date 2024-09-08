@@ -16,4 +16,4 @@ echo "Available backups: $(ls $backup_path)"
 read -p 'Backup file: ' backup_file
 
 # Restore backup
-docker exec -i pr2-db-1 sh -c "exec mysql -u$mysql_user -p\"$mysql_pass\"" < "$backup_path/$backup_file"
+docker exec -i pr2-mysql sh -c "exec mysql -u$mysql_user -p\"$mysql_pass\"" < "$backup_path/$backup_file"
