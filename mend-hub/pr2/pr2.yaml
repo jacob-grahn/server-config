@@ -7,6 +7,8 @@ services:
       - pr2-mysql-data:/var/lib/mysql
     networks:
       - pr2-backend
+    ports:
+      - 3306:3306 # note: keep the port firewalled from the public
 
   # exposes database metrics for prometheus
   pr2-mysql-exporter:
