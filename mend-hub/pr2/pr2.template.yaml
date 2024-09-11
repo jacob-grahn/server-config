@@ -19,6 +19,22 @@ services:
       - pr2-backend
     #ports:
     # - 9104:9104
+  
+  pr2-php-fpm:
+    container_name: pr2-php-fpm
+    image: ghcr.io/jacob-grahn/platform-racing-2-http:${HTTP_TAG}
+    networks:
+      - pr2-frontend
+      - pr2-backend
+  
+  pr2-nginx:
+    container_name: pr2-nginx
+    image: nginx:1.27.1
+    volumes:
+      - ./sites-enabled/cdn.jiggmin.com:/etc/nginx/sites-enabled/cdn.jiggmin.com
+      - ./sites-enabled/pr2hub:/etc/nginx/sites-enabled/pr2hub
+    networks:
+      - pr2-frontend
 
 volumes:
   pr2-mysql-data:

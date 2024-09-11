@@ -1,0 +1,42 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name pr2hub.com www.pr2hub.com;
+	root /var/www/pr2hub;
+	index index.php index.html;
+	client_max_body_size 5m;
+
+	location ~*\.php$ {
+		fastcgi_pass	pr2-php-fpm:9000;
+		include		    fastcgi_params;
+		fastcgi_param	SCRIPT_FILENAME	$document_root$fastcgi_script_name;
+		fastcgi_param	PHP_VALUE "auto_prepend_file=/pr2/config.php";
+	}
+
+	location /emblems/ {
+		expires 30d;
+		add_header Cache-Control public;
+		proxy_cache aws;
+		proxy_cache_valid any 1m;
+		proxy_cache_valid 200 302 30m;
+		proxy_pass http://pr2emblems.s3-website-us-east-1.amazonaws.com/;
+	}
+
+	location /levels/ {
+		add_header Cache-Control public;
+		proxy_cache aws;
+		proxy_cache_valid any 1m;
+		proxy_cache_valid 200 302 30m;
+		proxy_pass http://pr2levels1.s3-website-us-east-1.amazonaws.com/;
+	}
+
+	location /games/ {
+		expires 30d;
+		add_header Cache-Control public;
+		proxy_cache aws;
+		proxy_cache_valid any 10m;
+		proxy_cache_valid 200 302 30m;
+		proxy_pass http://jiggmin.s3-website-us-east-1.amazonaws.com/games/;
+	}
+}
