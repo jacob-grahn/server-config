@@ -31,8 +31,7 @@ services:
     container_name: pr2-nginx
     image: nginx:1.27.1
     volumes:
-      - ./sites-enabled/cdn.jiggmin.com:/etc/nginx/sites-enabled/cdn.jiggmin.com
-      - ./sites-enabled/pr2hub:/etc/nginx/sites-enabled/pr2hub
+      - ./nginx-pr2hub:/etc/nginx/sites-enabled/pr2hub
     networks:
       - pr2-frontend
 

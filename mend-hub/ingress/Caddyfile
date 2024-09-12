@@ -75,7 +75,24 @@ bubbleracing.com {
 
 
 monitoring.mend.games {
+
     # grafana
     reverse_proxy /* http://grafana:3000
+
+    # work with cloudflare
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
 }
 
+
+cdn.jiggmin.com {
+
+    # fetch files from s3 bucket
+    reverse_proxy /* http://jiggmin.s3-website-us-east-1.amazonaws.com
+
+    # work with cloudflare
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
