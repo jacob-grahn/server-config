@@ -15,6 +15,7 @@ services:
       - pr4-frontend
       - br-frontend
       - monitoring-frontend
+      - pr2-frontend
 
 volumes:
   caddy-data: {}
@@ -31,4 +32,7 @@ networks:
     external: true
   monitoring-frontend:
     name: monitoring-frontend
+    external: true
+  pr2-frontend:
+    name: pr2-frontend
     external: true

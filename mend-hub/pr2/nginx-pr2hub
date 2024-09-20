@@ -13,30 +13,4 @@ server {
 		fastcgi_param	SCRIPT_FILENAME	$document_root$fastcgi_script_name;
 		fastcgi_param	PHP_VALUE "auto_prepend_file=/pr2/config.php";
 	}
-
-	location /emblems/ {
-		expires 30d;
-		add_header Cache-Control public;
-		proxy_cache aws;
-		proxy_cache_valid any 1m;
-		proxy_cache_valid 200 302 30m;
-		proxy_pass http://pr2emblems.s3-website-us-east-1.amazonaws.com/;
-	}
-
-	location /levels/ {
-		add_header Cache-Control public;
-		proxy_cache aws;
-		proxy_cache_valid any 1m;
-		proxy_cache_valid 200 302 30m;
-		proxy_pass http://pr2levels1.s3-website-us-east-1.amazonaws.com/;
-	}
-
-	location /games/ {
-		expires 30d;
-		add_header Cache-Control public;
-		proxy_cache aws;
-		proxy_cache_valid any 10m;
-		proxy_cache_valid 200 302 30m;
-		proxy_pass http://jiggmin.s3-website-us-east-1.amazonaws.com/games/;
-	}
 }

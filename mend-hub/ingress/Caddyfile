@@ -96,3 +96,28 @@ cdn.jiggmin.com {
         dns cloudflare {env.CF_API_TOKEN}
     }
 }
+
+
+pr2.mend.games {
+
+    # emblems for pr2 teams
+    route /emblems/* {
+        uri strip_prefix emblems
+        reverse_proxy http://pr2emblems.s3-website-us-east-1.amazonaws.com
+    }
+
+    # levels
+    route /levels/* {
+        uri strip_prefix levels
+        reverse_proxy http://pr2levels1.s3-website-us-east-1.amazonaws.com
+    }
+
+    # files?
+    route /games/* {
+        uri strip_prefix games
+        reverse_proxy http://jiggmin.s3-website-us-east-1.amazonaws.com/games
+    }
+
+    # web
+    reverse_proxy /* http://pr2-http:80
+}
