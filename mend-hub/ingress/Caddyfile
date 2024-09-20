@@ -98,7 +98,7 @@ cdn.jiggmin.com {
 }
 
 
-pr2.mend.games {
+pr2.platformracing.com {
 
     # emblems for pr2 teams
     route /emblems/* {
