@@ -27,8 +27,7 @@ services:
       - pr2-frontend
       - pr2-backend
   
-  pr2-multi:
-    container_name: pr2-multi
+  multi:
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
     deploy:
       mode: replicated
