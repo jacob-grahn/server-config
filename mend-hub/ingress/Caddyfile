@@ -103,7 +103,9 @@ pr2.platformracing.com, pr2hub.com {
     # emblems for pr2 teams
     route /emblems/* {
         uri strip_prefix emblems
-        reverse_proxy http://pr2emblems.s3-website-us-east-1.amazonaws.com
+        reverse_proxy http://pr2emblems.s3-website-us-east-1.amazonaws.com {
+            header_up Host pr2emblems.s3-website-us-east-1.amazonaws.com
+        }
     }
 
     # levels
@@ -116,7 +118,9 @@ pr2.platformracing.com, pr2hub.com {
 
     # files?
     route /games/* {
-        reverse_proxy http://jiggmin.s3-website-us-east-1.amazonaws.com
+        reverse_proxy http://jiggmin.s3-website-us-east-1.amazonaws.com {
+            header_up Host jiggmin.s3-website-us-east-1.amazonaws.com
+        }
     }
 
     # web
