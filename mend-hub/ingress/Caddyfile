@@ -112,6 +112,11 @@ pr2.platformracing.com {
         reverse_proxy http://pr2levels1.s3-website-us-east-1.amazonaws.com
     }
 
+    # files?
+    route /games/* {
+        reverse_proxy http://jiggmin.s3-website-us-east-1.amazonaws.com
+    }
+
     # web
     reverse_proxy /* http://pr2-http:80
 
