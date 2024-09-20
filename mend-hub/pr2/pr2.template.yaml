@@ -27,19 +27,75 @@ services:
       - pr2-frontend
       - pr2-backend
   
-  multi:
+  pr2-multi-1:
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    deploy:
-      mode: replicated
-      replicas: 7
-    volumes:
-      - ./get-container-index.sh:/get-container-index.sh
-    command: exec php pr2/multiplayer_server/pr2.php $(./get-container-index.sh) 0
+    environment:
+      SERVER_ID: 1
     networks:
       - pr2-frontend
       - pr2-backend
     ports:
-      - "9160-9199:9160-9199"
+      - 9160:9160
+  
+  pr2-multi-2:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 2
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9161:9161
+  
+  pr2-multi-3:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 3
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9162:9162
+  
+  pr2-multi-4:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 4
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9163:9163
+  
+  pr2-multi-11:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 11
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9168:9168
+  
+  pr2-multi-12:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 12
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9171:9171
+  
+  pr2-multi-13:
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    environment:
+      SERVER_ID: 13
+    networks:
+      - pr2-frontend
+      - pr2-backend
+    ports:
+      - 9172:9172
 
 volumes:
   pr2-mysql-data:
