@@ -109,7 +109,9 @@ pr2.platformracing.com, pr2hub.com {
     # levels
     route /levels/* {
         uri strip_prefix levels
-        reverse_proxy http://pr2levels1.s3-website-us-east-1.amazonaws.com
+        reverse_proxy http://pr2levels1.s3-website-us-east-1.amazonaws.com {
+		    header_up Host pr2levels1.s3-website-us-east-1.amazonaws.com
+	    }
     }
 
     # files?
