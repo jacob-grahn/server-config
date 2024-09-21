@@ -30,8 +30,7 @@ services:
   pr2-multi-1:
     container_name: pr2-multi-1
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 1
+    command: '1'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -41,8 +40,7 @@ services:
   pr2-multi-2:
     container_name: pr2-multi-2
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 2
+    command: '2'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -52,8 +50,7 @@ services:
   pr2-multi-3:
     container_name: pr2-multi-3
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 3
+    command: '3'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -63,8 +60,7 @@ services:
   pr2-multi-4:
     container_name: pr2-multi-4
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 4
+    command: '4'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -74,8 +70,7 @@ services:
   pr2-multi-11:
     container_name: pr2-multi-11
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 11
+    command: '11'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -85,8 +80,7 @@ services:
   pr2-multi-12:
     container_name: pr2-multi-12
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 12
+    command: '12'
     networks:
       - pr2-frontend
       - pr2-backend
@@ -96,8 +90,7 @@ services:
   pr2-multi-13:
     container_name: pr2-multi-13
     image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
-    environment:
-      SERVER_ID: 13
+    command: '13'
     networks:
       - pr2-frontend
       - pr2-backend
