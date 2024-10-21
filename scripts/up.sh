@@ -5,28 +5,31 @@ set -e
 set -u
 
 # Inputs
-project=$1
+project_dir=$1
+
+# Computed
+project_name=$(basename "$project_dir")
 
 # Go to the directory containing the project
-cd "$(dirname "$0")/../$project"
+cd "$project_dir"
 
 # Run render script if it exists
 if test -f render.sh; then
   ./render.sh
 else
-  cp $project.yaml $project.rendered.yaml
+  cp $project_name.yaml $project_name.rendered.yaml
 fi
 
 # Create secrets file if it does not exist
-if ! test -f $project.secrets.yaml; then
-  touch $project.secrets.yaml
+if ! test -f $project_name.secrets.yaml; then
+  touch $project_name.secrets.yaml
 fi
 
 # Start project
 docker compose \
-  -f $project.rendered.yaml \
-  -f $project.secrets.yaml \
-  --project-name $project \
+  -f $project_name.rendered.yaml \
+  -f $project_name.secrets.yaml \
+  --project-name $project_name \
   up \
   -d \
   --remove-orphans

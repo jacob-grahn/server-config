@@ -10,9 +10,7 @@ cd "$(dirname "$0")"
 git pull
 
 # Run services
-./up.sh pr2
-./up.sh monitoring
-./up.sh pr4
-./up.sh pr4-dev
-./up.sh br
-./up.sh ingress
+server_dir=$1
+for subdir in "$server_dir"/*/; do
+    ./up.sh "$subdir"
+done

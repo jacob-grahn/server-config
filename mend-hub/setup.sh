@@ -82,8 +82,8 @@ git clone https://github.com/jacob-grahn/server-config.git ~/server-config
 
 # Set up cron job to run sync.sh every 10 minutes
 echo "Setting up cron job..."
-(crontab -l 2>/dev/null; echo "*/10 * * * * /home/fred-bot/server-config/mend-hub/scripts/sync.sh"; \
-echo "@reboot /home/fred-bot/server-config/mend-hub/scripts/sync.sh"; \
+(crontab -l 2>/dev/null; echo "*/10 * * * * /home/fred-bot/server-config/scripts/sync.sh /home/fred-bot/server-config/mend-hub"; \
+echo "@reboot /home/fred-bot/server-config/scripts/sync.sh /home/fred-bot/server-config/mend-hub"; \
 echo "5 4 * * * /home/fred-bot/server-config/mend-hub/pr2/backup.sh"; \
 echo "* * * * * docker exec pr2-http php /pr2/common/cron/minute.php"; \
 echo "9 * * * * docker exec pr2-http php /pr2/common/cron/hourly.php"; \

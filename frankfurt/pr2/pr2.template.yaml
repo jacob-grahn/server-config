@@ -1,0 +1,15 @@
+services:
+  
+  pr2-multi-5:
+    container_name: pr2-multi-5
+    image: ghcr.io/jacob-grahn/platform-racing-2-multi:${MULTI_TAG}
+    command: '5'
+    restart: always
+    networks:
+      - pr2-frontend
+    ports:
+      - 9164:9164
+
+networks:
+  pr2-frontend:
+    name: pr2-frontend
