@@ -21,6 +21,11 @@ dev.platformracing.com {
         reverse_proxy http://pr4-dev-kratos-ui:3000
     }
 
+    # gameserver
+    route /gs {
+        reverse_proxy pr4-game-server:8080
+    }
+
     # work with cloudflare
     tls {
         dns cloudflare {env.CF_API_TOKEN}

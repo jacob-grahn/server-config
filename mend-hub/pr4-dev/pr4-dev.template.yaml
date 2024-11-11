@@ -16,6 +16,12 @@ services:
     networks:
       - pr4-dev-frontend
   
+  pr4-game-server:
+    container_name: platform-racing-4-game-server
+    image: ghcr.io/jacob-grahn/platform-racing-4-game-server:${GAME_SERVER_TAG}
+    networks:
+      - pr4-dev-frontend
+  
   pr4-dev-kratos-migrate:
     container_name: pr4-dev-kratos-migrate
     image: oryd/kratos:v1.2.0
