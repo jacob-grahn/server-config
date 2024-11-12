@@ -22,8 +22,8 @@ dev.platformracing.com {
     }
 
     # gameserver
-    route /gs {
-        reverse_proxy pr4-game-server:8080
+    route /gameserver {
+        reverse_proxy pr4-game-server:8081
     }
 
     # work with cloudflare
