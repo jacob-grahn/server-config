@@ -16,8 +16,8 @@ services:
     networks:
       - pr4-dev-frontend
   
-  pr4-game-server:
-    container_name: platform-racing-4-game-server
+  pr4-dev-game-server:
+    container_name: pr4-dev-game-server
     image: ghcr.io/jacob-grahn/platform-racing-4-game-server:${GAME_SERVER_TAG}
     networks:
       - pr4-dev-frontend
