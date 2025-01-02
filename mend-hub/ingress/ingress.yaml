@@ -9,7 +9,7 @@ services:
       - 443:443
       - 443:443/udp
     environment:
-      CONFIG_VERSION: 17 # update this number for force caddy to restart and read new config
+      CONFIG_VERSION: 18 # update this number for force caddy to restart and read new config
     networks:
       - pr4-dev-frontend
       - pr4-frontend
