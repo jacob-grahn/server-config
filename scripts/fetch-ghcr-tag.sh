@@ -26,5 +26,9 @@ tags=$(echo "$tags_response" | jq -r ".tags[] | select(test(\"$pattern\"))" | so
 # Alphabetically, the top tag is the newest (this only works because we are tagging with the date)
 newest_tag=$(echo $tags | cut -d " " -f 1)
 
-# Output the result
-echo $newest_tag
+# Output the result or 'none' if newest_tag is blank or null
+if [[ -z "$newest_tag" ]]; then
+  echo "none"
+else
+  echo "$newest_tag"
+fi
