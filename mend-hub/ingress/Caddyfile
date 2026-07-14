@@ -146,31 +146,31 @@ pr2.platformracing.com, pr2hub.com {
 
     # gameservers
     route /gameservers/1 {
-        uri strip_prefix gameservers/1
+        uri strip_prefix /gameservers/1
         reverse_proxy pr2-multi-1:9160
     }
     route /gameservers/2 {
-        uri strip_prefix gameservers/2
+        uri strip_prefix /gameservers/2
         reverse_proxy pr2-multi-2:9161
     }
     route /gameservers/3 {
-        uri strip_prefix gameservers/3
+        uri strip_prefix /gameservers/3
         reverse_proxy pr2-multi-3:9162
     }
     route /gameservers/4 {
-        uri strip_prefix gameservers/4
+        uri strip_prefix /gameservers/4
         reverse_proxy pr2-multi-4:9163
     }
     route /gameservers/11 {
-        uri strip_prefix gameservers/11
-        reverse_proxy pr2-multi-11:9170
+        uri strip_prefix /gameservers/11
+        reverse_proxy pr2-multi-11:9168
     }
     route /gameservers/12 {
-        uri strip_prefix gameservers/12
+        uri strip_prefix /gameservers/12
         reverse_proxy pr2-multi-12:9171
     }
     route /gameservers/13 {
-        uri strip_prefix gameservers/13
+        uri strip_prefix /gameservers/13
         reverse_proxy pr2-multi-13:9172
     }
 
