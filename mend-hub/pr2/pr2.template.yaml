@@ -26,6 +26,12 @@ services:
     networks:
       - pr2-frontend
       - pr2-backend
+
+  pr2-extra-glitches:
+    container_name: pr2-extra-glitches
+    image: ghcr.io/jacob-grahn/platform-racing-2-client:2026-07-14-76e90b9
+    networks:
+      - pr2-frontend
   
   pr2-multi-1:
     container_name: pr2-multi-1
