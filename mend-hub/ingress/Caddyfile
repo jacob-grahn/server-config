@@ -105,20 +105,33 @@ cdn.jiggmin.com {
 
 pr2.platformracing.com, pr2hub.com {
 
-    # extra glitches client
+    # client
+    # todo: remove extra-glitches path later
     @extraGlitchesRoot {
         host pr2hub.com
         path /extra-glitches
     }
-    redir @extraGlitchesRoot /extra-glitches/ 308
-
     @extraGlitches {
         host pr2hub.com
         path /extra-glitches/*
     }
+    @clientRoot {
+        host pr2hub.com
+        path /client
+    }
+    redir @extraGlitchesRoot /client/ 308
     route @extraGlitches {
         uri strip_prefix /extra-glitches
-        reverse_proxy http://pr2-extra-glitches:80
+        redir /client{uri} 308
+    }
+    redir @clientRoot /client/ 308
+    @client {
+        host pr2hub.com
+        path /client/*
+    }
+    route @client {
+        uri strip_prefix /client
+        reverse_proxy http://pr2-client:80
     }
 
     # emblems for pr2 teams

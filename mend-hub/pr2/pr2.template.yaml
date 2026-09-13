@@ -27,8 +27,8 @@ services:
       - pr2-frontend
       - pr2-backend
 
-  pr2-extra-glitches:
-    container_name: pr2-extra-glitches
+  pr2-client:
+    container_name: pr2-client
     image: ghcr.io/jacob-grahn/platform-racing-2-client:${CLIENT_TAG}
     networks:
       - pr2-frontend
